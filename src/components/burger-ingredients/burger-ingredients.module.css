@@ -1,0 +1,21 @@
+.ingredients {
+  height: 912px;
+  width: 600px;
+  padding-left: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  text-align: start;
+}
+
+.tab {
+  display: flex;
+}
+
+.box {
+  height: 56px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
