@@ -1,3 +1,58 @@
-.burger-constructor {
+.components {
+  height: 616px;
+  width: 600px;
+  margin-top: 60px;
+  padding: 20px 16px 20px 16px;
+  overflow: auto;
+  /* overflow-y: scroll; */
+}
 
+.scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: -32px;
+  overflow-y: scroll;
+  overflow: hidden;
+  max-height: calc(100vh - 543px);
+  scrollbar-color: #8585AD #2F2F37;
+  scrollbar-width: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 292px;
+  background-color: #2F2F37;
+}
+
+::-webkit-scrollbar-track {
+  background: #2F2F37;
+  height: 464px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+  height: 292px;
+}
+/*
+.component {
+  width: 600px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.item {
+  width: 600px;
+  height: 80px;
+} */
+
+.box {
+  display: flex;
+  align-items: center;
+}
+
+.locked {
+  margin-left: 32px;
+  list-style-type: none;
 }

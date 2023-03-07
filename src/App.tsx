@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import AppHeader from './components/app-header/app-header.jsx';
 import BurgerIngredients from './components/burger-ingredients/burger-ingredients.jsx';
+import BurgerConstructor from './components/burger-constructor/burger-constructor.jsx';
+
 
 export const data =
   [
@@ -225,6 +227,7 @@ function App() {
       <AppHeader />
       <main>
         <BurgerIngredients />
+        <BurgerConstructor />
       </main>
     </div>
   );
