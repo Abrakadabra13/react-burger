@@ -8,6 +8,11 @@
   text-align: start;
 }
 
+.tabs {
+  display: flex;
+  margin-bottom: 40px;
+}
+
 .stuff {
   display: grid;
   grid-template-columns: 272px 272px;
@@ -31,9 +36,24 @@
   gap: 9px;
 }
 
-/* .scroll {
-  overflow-y: scroll;
+.scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-color: #8585AD #2F2F37;
+  scrollbar-width: 8px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 492px;
+  background-color: #2F2F37;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: #2F2F37;
   height: 664px;
-  scrollbar-width: thin;
-  scrollbar-color: hsl(0 0% 50%);
-} */
+}
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+  height: 492px;
+}
