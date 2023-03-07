@@ -1,10 +1,9 @@
 .components {
-  height: 616px;
+  max-height: 646px;
   width: 600px;
   margin-top: 60px;
   padding: 20px 16px 20px 16px;
-  overflow: auto;
-  /* overflow-y: scroll; */
+  overflow: hidden;
 }
 
 .scroll {
@@ -13,10 +12,11 @@
   gap: 10px;
   margin-left: -32px;
   overflow-y: scroll;
-  overflow: hidden;
+  overflow-x: hidden;
   max-height: calc(100vh - 543px);
+  max-height: 464px;
   scrollbar-color: #8585AD #2F2F37;
-  scrollbar-width: 8px;
+  padding-right: 8px;
 }
 
 ::-webkit-scrollbar {
@@ -33,19 +33,6 @@
   background-color: #8585AD;
   height: 292px;
 }
-/*
-.component {
-  width: 600px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-}
-
-.item {
-  width: 600px;
-  height: 80px;
-} */
 
 .box {
   display: flex;
@@ -55,4 +42,20 @@
 .locked {
   margin-left: 32px;
   list-style-type: none;
+  padding-right: 16px;
+}
+
+.info {
+  width: 568px;
+  height: 64px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  position: absolute;
+  margin-top: 40px;
+}
+
+.price {
+  width: 120px;
+  padding-right: 40px;
 }
