@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../burger-constructor/burger-constructor.module.css';
-import { data } from '../app/App';
+import { data } from '../../components/utils/data';
 import { DragIcon, ConstructorElement, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const BurgerConstructor = () => {
