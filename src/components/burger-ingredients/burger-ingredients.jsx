@@ -59,7 +59,7 @@ const IngredientList = (props) => {
       {props.count >= 1 && <Counter count={ props.count } size="default" extraClass="m-1" />}
       <img src={ props.image } alt= { props.name } />
       <div className={ styles.price }>
-        <p className='text text_type_digits-default'>30</p>
+        <p className='text text_type_digits-default'>{ props.price }</p>
         <CurrencyIcon type="primary" />
       </div>
       <p className='text text text_type_main-small'>{ props.name }</p>

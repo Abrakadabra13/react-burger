@@ -34,55 +34,11 @@ const BurgerConstructor = () => {
             thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
           />
         </li>
-        {/* <li className={ styles.locked }>
-        <ConstructorElement
-          text="Говяжий метеорит (отбивная)"
-          price={300}
-          thumbnail={"https://code.s3.yandex.net/react/code/meat-04.png"}
-        />
-        </li>
-        <li className={ styles.locked }>
-        <ConstructorElement
-          text="Биокотлета из марсианской Магнолии"
-          price={424}
-          thumbnail={"https://code.s3.yandex.net/react/code/meat-01.png"}
-        />
-        </li>
-        <li className={ styles.locked }>
-        <ConstructorElement
-          text="Кристаллы марсианских альфа-сахаридов"
-          price={762}
-          thumbnail={"https://code.s3.yandex.net/react/code/core.png"}
-        />
-        </li>
-        <li className={ styles.locked }>
-        <ConstructorElement
-          text="Мини-салат Экзо-Плантаго"
-          price={30}
-          thumbnail={"https://code.s3.yandex.net/react/code/salad.png"}
-        />
-        </li>
-        <li className={ styles.locked }>
-        <ConstructorElement
-          text="Филе Люминесцентного тетраодонтимформа"
-          price={988}
-          thumbnail={"https://code.s3.yandex.net/react/code/meat-03.png"}
-        />
-        </li>
-        <li className={ styles.locked }>
-        <ConstructorElement
-          text="Сыр с астероидной плесенью"
-          price={4142}
-          thumb
-          thumbnail={"https://code.s3.yandex.net/react/code/cheese.png"}
-        />
-        </li> */}
       </ul>
       <Info />
     </section>
   )
 }
-
 
 const Info = () => {
   return(
