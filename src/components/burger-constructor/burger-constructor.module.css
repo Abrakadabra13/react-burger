@@ -1,9 +1,8 @@
 .components {
   max-height: 646px;
-  min-width: 600px;
+  max-width: 600px;
   margin-top: 60px;
   padding: 20px 16px 20px 16px;
-  overflow: hidden;
 }
 
 .scroll {
