@@ -1,6 +1,6 @@
 .components {
   max-height: 646px;
-  width: 600px;
+  min-width: 600px;
   margin-top: 60px;
   padding: 20px 16px 20px 16px;
   overflow: hidden;
@@ -13,7 +13,6 @@
   margin-left: -32px;
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: calc(100vh - 543px);
   max-height: 464px;
   scrollbar-color: #8585AD #2F2F37;
   padding-right: 8px;

@@ -1,7 +1,6 @@
 .ingredients {
   height: 912px;
   width: 600px;
-  padding-left: 360px;
   display: flex;
   flex-direction: column;
   justify-content: left;

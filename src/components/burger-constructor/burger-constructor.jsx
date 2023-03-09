@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../burger-constructor/burger-constructor.module.css';
-import { data } from '../../components/utils/data';
+import { data } from '../../utils/data';
 import { DragIcon, ConstructorElement, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const BurgerConstructor = () => {
@@ -17,62 +17,13 @@ const BurgerConstructor = () => {
         />
           </li>
           <ul className={ styles.scroll }>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Соус традиционный галактический"
-                price={30}
-                thumbnail={"https://code.s3.yandex.net/react/code/sauce-03.png"}
-              />
-            </li>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Мясо бессмертных моллюсков Protostomia"
-                price={300}
-                thumbnail={"https://code.s3.yandex.net/react/code/meat-02.png"}
-              />
-            </li>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Плоды Фалленианского дерева"
-                price={80}
-                thumbnail={"https://code.s3.yandex.net/react/code/sp_1.png"}
-              />
-            </li>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Хрустящие минеральные кольца"
-                price={80}
-                thumbnail={"https://code.s3.yandex.net/react/code/mineral_rings.png"}
-              />
-            </li>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Хрустящие минеральные кольца"
-                price={80}
-                thumbnail={"https://code.s3.yandex.net/react/code/mineral_rings.png"}
-              />
-            </li>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Биокотлета из марсианской Магнолии"
-                price={424}
-                thumbnail={"https://code.s3.yandex.net/react/code/meat-01.png"}
-              />
-            </li>
-            <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text="Говяжий метеорит (отбивная)"
-                price={300}
-                thumbnail={"https://code.s3.yandex.net/react/code/meat-04.png"}
-              />
-            </li>
+            {data.map((obj) => {
+              if (obj.count > 0 && obj.isLocked !== "true") {
+
+                return(
+                <Items key = { obj._id } { ...obj }/>
+            )}
+            })}
           </ul>
         <li className={ styles.locked }>
           <ConstructorElement
@@ -133,7 +84,7 @@ const BurgerConstructor = () => {
 }
 
 
-export const Info = () => {
+const Info = () => {
   return(
     <div className={ styles.info }>
       <div className={ styles.price }>
@@ -144,5 +95,17 @@ export const Info = () => {
   )
 }
 
+const Items = (props) => {
+  return (
+    <li className={ styles.box }>
+              <DragIcon type="primary" />
+              <ConstructorElement
+                text= { props.name }
+                price={ props.price }
+                thumbnail={ props.image }
+              />
+            </li>
+  )
+}
 
 export default BurgerConstructor;

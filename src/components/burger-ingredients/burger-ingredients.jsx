@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../burger-ingredients/burger-ingredients.module.css';
-import { data } from '../../components/utils/data';
+import { data } from '../../utils/data';
 import { CurrencyIcon, Tab, Counter  } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const BurgerIngredients = () => {
@@ -23,53 +23,47 @@ const BurgerIngredients = () => {
       <div className={ styles.scroll }>
         <h2 className='text text_type_main-medium pb-6'>Булки</h2>
         <div className={ styles.stuff }>
-          <BurgerElement />
+          {data.map((obj) => {
+            if (obj.type === 'bun') {
+              return (
+              <IngredientList key = { obj._id } { ...obj } />
+          )}
+          })}
         </div>
-          <h2 className='text text_type_main-medium pt-10 pb-6'>Соусы</h2>
-          <div className={ styles.stuff }>
-          <SauseElement />
+        <h2 className='text text_type_main-medium pt-10 pb-6'>Соусы</h2>
+        <div className={ styles.stuff }>
+          {data.map((obj) => {
+            if (obj.type === 'sauce') {
+              return (
+              <IngredientList key = { obj._id } { ...obj } />
+          )}
+          })}
+        </div>
+        <h2 className='text text_type_main-medium pt-10 pb-6'>Начинки</h2>
+        <div className={ styles.stuff }>
+          {data.map((obj) => {
+            if (obj.type === 'main') {
+              return (
+              <IngredientList key = { obj._id } { ...obj } />
+          )}
+          })}
         </div>
       </div>
     </section>
   )
 }
 
-const BurgerElement = () => {
+const IngredientList = (props) => {
   return (
-    data.map((obj) => {
-        if(obj.type === 'bun') {
-        return (
-          <div className={ styles.container }>
-            {obj.count >= 1 && <Counter count={ obj.count } size="default" extraClass="m-1" />}
-            <img src={ obj.image } />
-            <div className={ styles.price }>
-              <p className='text text_type_digits-default'>20</p>
-              <CurrencyIcon type="primary" />
-            </div>
-            <p className='text text text_type_main-small'>{ obj.name }</p>
-        </div>
-
-    )}
-  })
-)}
-
-const SauseElement = () => {
-  return (
-    data.map((obj) => {
-        if(obj.type === 'sauce') {
-        return (
-          <div className={ styles.container }>
-            {obj.count >= 1 && <Counter count={ obj.count } size="default" extraClass="m-1" />}
-            <img src={ obj.image } />
-            <div className={ styles.price }>
-              <p className='text text_type_digits-default'>30</p>
-              <CurrencyIcon type="primary" />
-            </div>
-            <p className='text text text_type_main-small'>{ obj.name }</p>
-        </div>
-
-    )}
-  })
-)}
+    <div className={ styles.container }>
+      {props.count >= 1 && <Counter count={ props.count } size="default" extraClass="m-1" />}
+      <img src={ props.image } alt= { props.name } />
+      <div className={ styles.price }>
+        <p className='text text_type_digits-default'>30</p>
+        <CurrencyIcon type="primary" />
+      </div>
+      <p className='text text text_type_main-small'>{ props.name }</p>
+    </div>
+  )}
 
 export default BurgerIngredients;
