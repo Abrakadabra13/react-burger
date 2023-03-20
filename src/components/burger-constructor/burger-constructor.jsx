@@ -2,6 +2,7 @@ import styles from '../burger-constructor/burger-constructor.module.css';
 import { data } from '../../utils/data';
 import { DragIcon, ConstructorElement, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import Modal from '../modal/modal';
 
 const BurgerConstructor = (props) => {
@@ -42,12 +43,14 @@ const BurgerConstructor = (props) => {
 }
 
 const Info = (props) => {
+
   return(
     <div className={ styles.info }>
       <div className={ styles.price }>
-      <p className="text text_type_digits-medium">610<CurrencyIcon type="primary" /></p>
+      <p className="text text_type_digits-medium">610</p>
+      <CurrencyIcon type="primary" />
       </div>
-      <Button htmlType="button" type="primary" size="medium">Оформить заказ</Button>
+      <Button htmlType="button" type="primary" size="medium" >Оформить заказ</Button>
     </div>
   )
 }
