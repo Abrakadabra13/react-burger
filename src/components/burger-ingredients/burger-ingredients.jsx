@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from '../burger-ingredients/burger-ingredients.module.css';
-import { data } from '../../utils/data';
 import { CurrencyIcon, Tab, Counter  } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 
-const BurgerIngredients = () => {
+const BurgerIngredients = (props) => {
   const [current, setCurrent] = React.useState('bun');
 
   return (
@@ -23,7 +23,7 @@ const BurgerIngredients = () => {
       <div className={ styles.scroll }>
         <h2 className='text text_type_main-medium pb-6'>Булки</h2>
         <div className={ styles.stuff }>
-          {data.map((obj) => {
+          {props.data.map((obj) => {
             if (obj.type === 'bun') {
               return (
               <IngredientList key = { obj._id } { ...obj } />
@@ -32,7 +32,7 @@ const BurgerIngredients = () => {
         </div>
         <h2 className='text text_type_main-medium pt-10 pb-6'>Соусы</h2>
         <div className={ styles.stuff }>
-          {data.map((obj) => {
+          {props.data.map((obj) => {
             if (obj.type === 'sauce') {
               return (
               <IngredientList key = { obj._id } { ...obj } />
@@ -41,7 +41,7 @@ const BurgerIngredients = () => {
         </div>
         <h2 className='text text_type_main-medium pt-10 pb-6'>Начинки</h2>
         <div className={ styles.stuff }>
-          {data.map((obj) => {
+          {props.data.map((obj) => {
             if (obj.type === 'main') {
               return (
               <IngredientList key = { obj._id } { ...obj } />
@@ -52,6 +52,10 @@ const BurgerIngredients = () => {
     </section>
   )
 }
+
+BurgerIngredients.propTypes = {
+  data: PropTypes.array,
+};
 
 const IngredientList = (props) => {
   return (
@@ -65,5 +69,11 @@ const IngredientList = (props) => {
       <p className='text text text_type_main-small'>{ props.name }</p>
     </div>
   )}
+
+  IngredientList.propTypes = {
+    price: PropTypes.number,
+    name: PropTypes.string,
+    image: PropTypes.string,
+  };
 
 export default BurgerIngredients;

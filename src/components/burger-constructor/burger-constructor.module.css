@@ -38,9 +38,9 @@
 }
 
 .locked {
-  margin-left: 32px;
+  /* margin-left: 32px; */
   list-style-type: none;
-  padding-right: 16px;
+  /* padding-right: 16px; */
 }
 
 .info {

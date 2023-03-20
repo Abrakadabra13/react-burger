@@ -1,0 +1,24 @@
+.modal {
+  height: 718px;
+  width: 720px;
+  border-radius: 40px;
+  background-color: #1C1C21;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+}
+
+.cross {
+  position: absolute;
+  top: 63px;
+  right: 43px;
+}

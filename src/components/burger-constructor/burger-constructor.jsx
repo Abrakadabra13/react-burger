@@ -1,9 +1,10 @@
-import React from 'react';
 import styles from '../burger-constructor/burger-constructor.module.css';
 import { data } from '../../utils/data';
 import { DragIcon, ConstructorElement, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
+import Modal from '../modal/modal';
 
-const BurgerConstructor = () => {
+const BurgerConstructor = (props) => {
   return (
     <section className={ styles.components }>
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -40,11 +41,11 @@ const BurgerConstructor = () => {
   )
 }
 
-const Info = () => {
+const Info = (props) => {
   return(
     <div className={ styles.info }>
       <div className={ styles.price }>
-      <p className="text text_type_digits-medium">610 <CurrencyIcon type="primary" /></p>
+      <p className="text text_type_digits-medium">610<CurrencyIcon type="primary" /></p>
       </div>
       <Button htmlType="button" type="primary" size="medium">Оформить заказ</Button>
     </div>
@@ -64,4 +65,12 @@ const Items = (props) => {
   )
 }
 
+Items.propTypes = {
+  price: PropTypes.number,
+  name: PropTypes.string,
+  image: PropTypes.string,
+};
+
 export default BurgerConstructor;
+
+
