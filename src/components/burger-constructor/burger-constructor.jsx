@@ -2,10 +2,23 @@ import styles from '../burger-constructor/burger-constructor.module.css';
 import { data } from '../../utils/data';
 import { DragIcon, ConstructorElement, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Modal from '../modal/modal';
+import OrderDetails from '../order-details/order-details'
 
 const BurgerConstructor = (props) => {
+  const bunLocked = data.filter((item) => item.name === 'Краторная булка N-200i');
+
+  const [visible, setVisible] = useState(false);
+
+  // const openModal = () => {
+  //   setVisible(true);
+  // };
+
+  const closeModal = () => {
+    setVisible(false);
+  };
+
   return (
     <section className={ styles.components }>
       <ul style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -13,17 +26,26 @@ const BurgerConstructor = (props) => {
         <ConstructorElement
           type="top"
           isLocked={true}
-          text="Краторная булка N-200i (верх)"
-          price={200}
-          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+          text={bunLocked[0].name + ' (верх)'}
+          price={bunLocked[0].price}
+          thumbnail={bunLocked[0].image}
         />
           </li>
           <ul className={ styles.scroll }>
             {data.map((obj) => {
               if (obj.count > 0 && obj.isLocked !== "true") {
-
-                return(
-                <Items key = { obj._id } { ...obj }/>
+            //     return(
+            //     <Items key = { obj._id } { ...obj }/>
+            // )
+            return (
+              <li key={obj._id} className={styles.box}>
+                <DragIcon type="primary" />
+                <ConstructorElement
+                  text={obj.name}
+                  price={obj.price}
+                  thumbnail={obj.image}
+                />
+              </li>
             )}
             })}
           </ul>
@@ -31,48 +53,44 @@ const BurgerConstructor = (props) => {
           <ConstructorElement
             type="bottom"
             isLocked={true}
-            text="Краторная булка N-200i (низ)"
-            price={200}
-            thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+            text={bunLocked[0].name + ' (низ)'}
+            price={bunLocked[0].price}
+            thumbnail={bunLocked[0].image}
           />
         </li>
       </ul>
-      <Info />
-    </section>
-  )
-}
-
-const Info = (props) => {
-
-  return(
-    <div className={ styles.info }>
+      <div className={ styles.info }>
       <div className={ styles.price }>
       <p className="text text_type_digits-medium">610</p>
       <CurrencyIcon type="primary" />
       </div>
-      <Button htmlType="button" type="primary" size="medium" >Оформить заказ</Button>
+      <Button htmlType="button" type="primary" size="medium" onClick={() => setVisible(true)}>Оформить заказ</Button>
     </div>
+    {visible && (
+      <Modal closeModal={closeModal}>
+        <OrderDetails />
+      </Modal>
+        )}
+    </section>
   )
 }
 
-const Items = (props) => {
-  return (
-    <li className={ styles.box }>
-              <DragIcon type="primary" />
-              <ConstructorElement
-                text= { props.name }
-                price={ props.price }
-                thumbnail={ props.image }
-              />
-            </li>
-  )
-}
+// const Items = (props) => {
+//   return (
+//     <li className={ styles.box }>
+//               <DragIcon type="primary" />
+//               <ConstructorElement
+//                 text= { props.name }
+//                 price={ props.price }
+//                 thumbnail={ props.image }
+//               />
+//             </li>
+//   )
+// }
 
-Items.propTypes = {
-  price: PropTypes.number,
-  name: PropTypes.string,
-  image: PropTypes.string,
-};
+BurgerConstructor.propTypes = {
+  data: PropTypes.array.isRequired,
+}
 
 export default BurgerConstructor;
 

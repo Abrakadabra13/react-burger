@@ -11,8 +11,7 @@ import Modal from '../modal/modal';
 function App() {
   // const [isLoading, setIsLoading] = useState(false);
   // const [hasError, setHasError] = useState(false);
-  // const [visible, setVisible] = useState(false);
-
+  // const [visible, setVisible] = useState(true);
   const [data, setData] = useState([]);
 
   React.useEffect(() => {
@@ -37,7 +36,7 @@ function App() {
         <BurgerIngredients data = {data}/>
         <BurgerConstructor data = {data}/>
         {/* <Modal modal='modal' visible={visible} onClose={() => setVisible(false)} /> */}
-        <Modal />
+        {/* <Modal visible={visible}/> */}
       </main>
     </div>
   );
