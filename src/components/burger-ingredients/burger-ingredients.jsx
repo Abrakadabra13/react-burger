@@ -1,10 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from '../burger-ingredients/burger-ingredients.module.css';
 import { CurrencyIcon, Tab, Counter  } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
+import Modal from '../modal/modal';
+import IngredientDetails from '../ingredient-details/ingredient-details';
 
 const BurgerIngredients = (props) => {
-  const [current, setCurrent] = React.useState('bun');
+
+  const [current, setCurrent] = useState('bun');
+  const [visible, setVisible] = useState(false);
+  const [currentIngredient, setCurrentIngredient] = useState({});
+
+  const openModal = (element) => {
+    setVisible(true);
+    setCurrentIngredient(element);
+  };
+
+  const closeModal = () => {
+    setVisible(false);
+  };
+
 
   return (
     <section className={ styles.ingredients }>
@@ -26,7 +41,7 @@ const BurgerIngredients = (props) => {
           {props.data.map((obj) => {
             if (obj.type === 'bun') {
               return (
-              <IngredientList key = { obj._id } { ...obj } />
+              <IngredientList key = { obj._id } { ...obj } openModal={() => openModal(obj)} />
           )}
           })}
         </div>
@@ -35,7 +50,7 @@ const BurgerIngredients = (props) => {
           {props.data.map((obj) => {
             if (obj.type === 'sauce') {
               return (
-              <IngredientList key = { obj._id } { ...obj } />
+              <IngredientList key = { obj._id } { ...obj } openModal={() => openModal(obj)} />
           )}
           })}
         </div>
@@ -44,36 +59,43 @@ const BurgerIngredients = (props) => {
           {props.data.map((obj) => {
             if (obj.type === 'main') {
               return (
-              <IngredientList key = { obj._id } { ...obj } />
+              <IngredientList key = { obj._id } { ...obj } openModal={() => openModal(obj)} />
           )}
           })}
         </div>
       </div>
+      {visible &&
+          <Modal closeModal={closeModal}>
+            <IngredientDetails currentElement={currentIngredient} />
+          </Modal>
+        }
     </section>
   )
 }
 
 BurgerIngredients.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.array.isRequired
 };
 
-const IngredientList = (props) => {
+const IngredientList = ({count, price, name, image, openModal}) => {
   return (
-    <div className={ styles.container }>
-      {props.count >= 1 && <Counter count={ props.count } size="default" extraClass="m-1" />}
-      <img src={ props.image } alt= { props.name } />
+    <div className={ styles.container } onClick={openModal}>
+      {count >= 1 && <Counter count={ count } size="default" extraClass="m-1" />}
+      <img src={ image } alt= { name } />
       <div className={ styles.price }>
-        <p className='text text_type_digits-default'>{ props.price }</p>
+        <p className='text text_type_digits-default'>{ price }</p>
         <CurrencyIcon type="primary" />
       </div>
-      <p className='text text text_type_main-small'>{ props.name }</p>
+      <p className='text text text_type_main-small'>{ name }</p>
     </div>
   )}
 
   IngredientList.propTypes = {
-    price: PropTypes.number,
-    name: PropTypes.string,
-    image: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+    openModal: PropTypes.func.isRequired,
   };
+
 
 export default BurgerIngredients;

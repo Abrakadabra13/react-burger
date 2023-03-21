@@ -12,3 +12,24 @@
   align-items: center;
   z-index: 1;
 }
+
+.image {
+  width: 120px;
+  height: 120px;
+  background-image: url(../../images/done.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* .cross {
+  position: absolute;
+  top: 63px;
+  right: 43px;
+  z-index: 2;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+} */

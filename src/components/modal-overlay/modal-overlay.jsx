@@ -1,4 +1,4 @@
-import styles from '../modal-overlay/modal-overlay.module.css'
+import styles from '../modal-overlay/modal-overlay.module.css';
 import PropTypes from 'prop-types';
 
 const ModalOverlay = ({children, closeModal}) => {
@@ -10,8 +10,8 @@ const ModalOverlay = ({children, closeModal}) => {
   )
 }
 
-// ModalOverlay.propTypes = {
-//   closeModal: PropTypes.func.isRequired
-// }
+ModalOverlay.propTypes = {
+  closeModal: PropTypes.func.isRequired
+}
 
 export default ModalOverlay;
