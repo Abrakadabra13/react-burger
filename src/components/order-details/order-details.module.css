@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image {
+  width: 120px;
+  height: 120px;
+  background-image: url(../../images/done.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.title {
+  text-shadow: 0 0 16px rgba(51, 51, 255, .25), 0 0 8px rgba(51, 51, 255, .25), 0 4px 32px rgba(51, 51, 255, .5);
+}
