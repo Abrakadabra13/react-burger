@@ -1,5 +1,5 @@
 import styles from "../burger-constructor/burger-constructor.module.css";
-import { data } from "../../utils/data";
+// import { data } from "../../utils/data";
 import {
   DragIcon,
   ConstructorElement,
@@ -7,13 +7,20 @@ import {
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
+//import { UserContext } from "../../utils/userContext";
+import {BurgerContext} from "../burger-ingredients/burger-ingredients.jsx";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 
-const BurgerConstructor = (props) => {
+const BurgerConstructor = () => {
+
+  const data = useContext(BurgerContext);
+
+
+
   const bunLocked = data.filter(
-    (item) => item.name === "Краторная булка N-200i"
+    (item) => item.type === "bun"
   );
 
   const [visible, setVisible] = useState(false);
@@ -33,9 +40,9 @@ const BurgerConstructor = (props) => {
           <ConstructorElement
             type="top"
             isLocked={true}
-            text={bunLocked[0].name + " (верх)"}
-            price={bunLocked[0].price}
-            thumbnail={bunLocked[0].image}
+            text={bunLocked[0]?.name + " (верх)"}
+            price={bunLocked[0]?.price}
+            thumbnail={bunLocked[0]?.image}
           />
         </li>
         <ul className={styles.scroll}>
@@ -58,9 +65,9 @@ const BurgerConstructor = (props) => {
           <ConstructorElement
             type="bottom"
             isLocked={true}
-            text={bunLocked[0].name + " (низ)"}
-            price={bunLocked[0].price}
-            thumbnail={bunLocked[0].image}
+            text={bunLocked[0]?.name + " (низ)"}
+            price={bunLocked[0]?.price}
+            thumbnail={bunLocked[0]?.image}
           />
         </li>
       </ul>
@@ -87,8 +94,10 @@ const BurgerConstructor = (props) => {
   );
 };
 
-BurgerConstructor.propTypes = {
-  data: PropTypes.array.isRequired,
-};
+
+
+// BurgerConstructor.propTypes = {
+//   data: PropTypes.array.isRequired,
+// };
 
 export default BurgerConstructor;

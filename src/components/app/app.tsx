@@ -3,9 +3,13 @@ import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header.jsx";
 import { url } from "../../utils/data";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients.jsx";
+import {BurgerContext} from "../burger-ingredients/burger-ingredients.jsx";
 import BurgerConstructor from "../burger-constructor/burger-constructor.jsx";
+//import { UserContext } from "../../utils/userContext";
+
 
 function App() {
+
   const [data, setData] = useState([]);
 
   React.useEffect(() => {
@@ -27,8 +31,10 @@ function App() {
     <div className={styles.app}>
       <AppHeader />
       <main>
-        <BurgerIngredients data={data} />
-        <BurgerConstructor data={data} />
+        <BurgerContext.Provider value={data}>
+          <BurgerIngredients />
+          <BurgerConstructor />
+        </BurgerContext.Provider>
       </main>
     </div>
   );
