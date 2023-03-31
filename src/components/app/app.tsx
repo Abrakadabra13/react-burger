@@ -1,26 +1,17 @@
 import React, { useState } from "react";
 import styles from "./app.module.css";
 import AppHeader from "../app-header/app-header.jsx";
-import { url } from "../../utils/data";
+import { getIngredients } from "../../utils/data";
 import BurgerIngredients from "../burger-ingredients/burger-ingredients.jsx";
-import {BurgerContext} from "../burger-ingredients/burger-ingredients.jsx";
 import BurgerConstructor from "../burger-constructor/burger-constructor.jsx";
-//import { UserContext } from "../../utils/userContext";
-
+import { BurgerContext } from "../../utils/BurgerContext";
 
 function App() {
-
   const [data, setData] = useState([]);
 
   React.useEffect(() => {
     const getData = async () => {
-      return await fetch(url)
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-          return Promise.reject(`Ошибка ${res.status}`);
-        })
+      return await getIngredients()
         .then((data) => setData(data.data))
         .catch((err) => console.log("Ошибка. Запрос не выполнен: ", err));
     };

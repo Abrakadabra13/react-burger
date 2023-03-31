@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-//import { UserContext } from "../../utils/userContext";
 import styles from "../burger-ingredients/burger-ingredients.module.css";
 import {
   CurrencyIcon,
@@ -9,8 +8,7 @@ import {
 import PropTypes from "prop-types";
 import Modal from "../modal/modal";
 import IngredientDetails from "../ingredient-details/ingredient-details";
-
-export const BurgerContext = React.createContext();
+import { BurgerContext } from "../../utils/BurgerContext";
 
 const BurgerIngredients = () => {
 

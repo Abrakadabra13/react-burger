@@ -1,29 +1,57 @@
 import styles from "../burger-constructor/burger-constructor.module.css";
-// import { data } from "../../utils/data";
 import {
   DragIcon,
   ConstructorElement,
   Button,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
+import { getData } from "../app/app"
 import PropTypes from "prop-types";
 import React, { useState, useContext } from "react";
-//import { UserContext } from "../../utils/userContext";
-import {BurgerContext} from "../burger-ingredients/burger-ingredients.jsx";
+import { BurgerContext } from "../../utils/BurgerContext";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
 
-const BurgerConstructor = () => {
+//import { url } from "../../utils/data";
 
+// export const getOrders = ({getData}) => { // POST-запрос для получения номера заказа
+//   return fetch(`${url}/orders`, {
+//     method: 'POST',
+//     headers: {'Content-Type': 'application/json'},
+//     body: JSON.stringify({
+//       "ingredients": getData()
+//     })
+//   })
+//   .then((res) => {
+//     if (res.ok) {
+//       return res.json();
+//     }
+//     return Promise.reject(`Ошибка ${res.status}`);
+//   })
+// };
+
+const BurgerConstructor = () => {
+  const [visible, setVisible] = useState(false);
+  const [number, setNumber] = useState(); // номер заказа
+ // const [listIngredients, setListIngredients] = useState([]);
   const data = useContext(BurgerContext);
 
+  // const getNumber = async () => {
+  //   return await getOrders({getData})
+  //   .then((data) => setNumber(data.order.number))
+  //   .catch((err) => console.log(err));
+  // }
+
+  const IngridientId = [];
+  data.forEach(item => {
+
+    IngridientId.push(item?._id)
+
+    return IngridientId;
+  });
 
 
-  const bunLocked = data.filter(
-    (item) => item.type === "bun"
-  );
-
-  const [visible, setVisible] = useState(false);
+  const bunLocked = data.filter((item) => item.type === "bun");
 
   const openModal = () => {
     setVisible(true);
@@ -93,8 +121,6 @@ const BurgerConstructor = () => {
     </section>
   );
 };
-
-
 
 // BurgerConstructor.propTypes = {
 //   data: PropTypes.array.isRequired,

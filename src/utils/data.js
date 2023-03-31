@@ -1,4 +1,31 @@
-export const url = 'https://norma.nomoreparties.space/api/ingredients'
+export const url = 'https://norma.nomoreparties.space/api';
+
+const checkResponse = (res) => {
+  if(res.ok) {
+    return res.json();
+  } else {
+    return Promise.reject(res);
+  }
+};
+
+export const getIngredients = () => {
+  return fetch(`${url}/ingredients`)
+  .then((res) =>
+    checkResponse(res)
+  )
+}
+
+export const getOrders = ({getIngredient}) => {
+  return fetch(`${url}/orders`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      "ingredients": getIngredient()
+    })
+  })
+  .then((res) => checkResponse(res))
+}
+
 
 // export const data =
 //   [
