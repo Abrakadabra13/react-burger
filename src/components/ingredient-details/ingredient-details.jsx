@@ -50,7 +50,14 @@ const IngredientDetails = ({ currentElement }) => {
 };
 
 IngredientDetails.propTypes = {
-  currentElement: PropTypes.object.isRequired,
+  currentElement: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    proteins: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    carbohydrates: PropTypes.number.isRequired,
+    calories: PropTypes.number.isRequired,
+    image_large: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default IngredientDetails;

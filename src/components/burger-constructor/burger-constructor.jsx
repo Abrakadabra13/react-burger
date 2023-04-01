@@ -5,9 +5,8 @@ import {
   Button,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { url, checkResponse } from "../../utils/data";
-import PropTypes from "prop-types";
-import React, { useState, useContext } from "react";
+import { getOrders } from "../../utils/burger-api";
+import { useState, useContext } from "react";
 import { BurgerContext } from "../../utils/BurgerContext";
 import Modal from "../modal/modal";
 import OrderDetails from "../order-details/order-details";
@@ -24,23 +23,10 @@ const BurgerConstructor = () => {
     });
     return ingridientId;
   };
-
-  const getOrders = () => {
-    return fetch(`${url}/orders`, {
-      headers: { "Content-Type": "application/json" },
-      method: "POST",
-      body: JSON.stringify({
-        ingredients: getId(),
-      }),
-    })
-      .then((res) => checkResponse(res))
-      .catch((err) => console.log(err));
-  };
-
   const getNumber = async () => {
-    return await getOrders()
-      .then((data) => setNumber(data.order.number))
-      .catch((err) => console.log(err));
+    return await getOrders({ getId }).then((data) =>
+      setNumber(data.order.number)
+    );
   };
 
   const bunOrder = 0;
@@ -133,9 +119,5 @@ const BurgerConstructor = () => {
     </section>
   );
 };
-
-// BurgerConstructor.propTypes = {
-//   data: PropTypes.array.isRequired,
-// };
 
 export default BurgerConstructor;
