@@ -54,7 +54,6 @@
 }
 
 .price {
-  width: 120px;
   padding-right: 40px;
   display: flex;
   gap: 9px;

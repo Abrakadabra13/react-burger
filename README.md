@@ -1,3 +1,12 @@
+8 спринт, проект Stellar Burger
+
+Технологии
+
+HTML
+CSS
+JS
+React
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -11,7 +11,6 @@ import IngredientDetails from "../ingredient-details/ingredient-details";
 import { BurgerContext } from "../../utils/BurgerContext";
 
 const BurgerIngredients = () => {
-
   const data = useContext(BurgerContext);
 
   const [current, setCurrent] = useState("bun");

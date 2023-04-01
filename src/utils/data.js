@@ -1,6 +1,6 @@
 export const url = 'https://norma.nomoreparties.space/api';
 
-const checkResponse = (res) => {
+export const checkResponse = (res) => {
   if(res.ok) {
     return res.json();
   } else {
@@ -15,16 +15,16 @@ export const getIngredients = () => {
   )
 }
 
-export const getOrders = ({getIngredient}) => {
-  return fetch(`${url}/orders`, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      "ingredients": getIngredient()
-    })
-  })
-  .then((res) => checkResponse(res))
-}
+// export const getOrders = ({getId}) => {
+//   return fetch(`${url}/orders`, {
+//     method: 'POST',
+//     headers: {'Content-Type': 'application/json'},
+//     body: JSON.stringify({
+//       "ingredients": getId()
+//     })
+//   })
+//   .then((res) => checkResponse(res))
+// }
 
 
 // export const data =
