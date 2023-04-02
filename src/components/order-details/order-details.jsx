@@ -1,10 +1,11 @@
 import styles from "../order-details/order-details.module.css";
+import PropTypes from "prop-types";
 
-const OrderDetails = () => {
+const OrderDetails = ({ number }) => {
   return (
     <div className={styles.container}>
       <h2 className={`${styles.title} text text_type_digits-large pt-30 pb-8`}>
-        034536
+        {number}
       </h2>
       <p className="text text_type_main-medium pb-15">идентификатор заказа</p>
       <div className={styles.image}></div>
@@ -19,3 +20,7 @@ const OrderDetails = () => {
 };
 
 export default OrderDetails;
+
+OrderDetails.propTypes = {
+  number: PropTypes.number,
+};

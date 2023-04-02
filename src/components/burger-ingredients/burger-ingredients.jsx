@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "../burger-ingredients/burger-ingredients.module.css";
 import {
   CurrencyIcon,
@@ -8,8 +8,11 @@ import {
 import PropTypes from "prop-types";
 import Modal from "../modal/modal";
 import IngredientDetails from "../ingredient-details/ingredient-details";
+import { BurgerContext } from "../../utils/BurgerContext";
 
-const BurgerIngredients = (props) => {
+const BurgerIngredients = () => {
+  const data = useContext(BurgerContext);
+
   const [current, setCurrent] = useState("bun");
   const [visible, setVisible] = useState(false);
   const [currentIngredient, setCurrentIngredient] = useState({});
@@ -40,7 +43,7 @@ const BurgerIngredients = (props) => {
       <div className={styles.scroll}>
         <h2 className="text text_type_main-medium pb-6">Булки</h2>
         <div className={styles.stuff}>
-          {props.data.map((obj) => {
+          {data.map((obj) => {
             if (obj.type === "bun") {
               return (
                 <IngredientList
@@ -54,7 +57,7 @@ const BurgerIngredients = (props) => {
         </div>
         <h2 className="text text_type_main-medium pt-10 pb-6">Соусы</h2>
         <div className={styles.stuff}>
-          {props.data.map((obj) => {
+          {data.map((obj) => {
             if (obj.type === "sauce") {
               return (
                 <IngredientList
@@ -68,7 +71,7 @@ const BurgerIngredients = (props) => {
         </div>
         <h2 className="text text_type_main-medium pt-10 pb-6">Начинки</h2>
         <div className={styles.stuff}>
-          {props.data.map((obj) => {
+          {data.map((obj) => {
             if (obj.type === "main") {
               return (
                 <IngredientList
@@ -90,9 +93,9 @@ const BurgerIngredients = (props) => {
   );
 };
 
-BurgerIngredients.propTypes = {
-  data: PropTypes.array.isRequired,
-};
+// BurgerIngredients.propTypes = {
+//   data: PropTypes.array.isRequired,
+// };
 
 const IngredientList = ({ count, price, name, image, openModal }) => {
   return (
