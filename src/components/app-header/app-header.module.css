@@ -1,0 +1,33 @@
+.header {
+  max-width: calc(100vw - 80px);
+  height: 88px;
+  background-color: #1C1C21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.constructor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 178px;
+  height: 56px;
+}
+
+.order {
+  display: flex;
+  gap: 8px;
+}
+
+svg {
+  padding-right: 8px;
+}
+
